@@ -1,7 +1,6 @@
 
 set tabstop=2
 set shiftwidth=2
-set expandtab
 set ruler
 syntax on
 set relativenumber
@@ -9,6 +8,7 @@ set relativenumber
 set visualbell
 set noerrorbells
 
+autocmd FileType * set expandtab
 autocmd FileType go set noexpandtab
 
 set wildmenu
@@ -25,5 +25,11 @@ if exists("*matchadd")
     au VimEnter,WinEnter * match ExtraWhitespace /\s\+$/
   augroup END
 endif
+
+command! Vgotestsplit vs %:p:s,_test.go$,.X123X,:s,.go$,_test.go,:s,.X123X$,.go,
+
+command! Vpytestsplit vs %:p:s,_test.go$,.X123X,:s,.go$,_test.go,:s,.X123X$,.go,
+
+command! Vcppsplit vs %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,
 
 colorscheme desert
